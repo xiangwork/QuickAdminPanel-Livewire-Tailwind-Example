@@ -1,7 +1,7 @@
 <div>
     <div class="card-controls sm:flex">
         <div class="w-full sm:w-1/2">
-            <button class="btn btn-rose ml-3 disabled:opacity-50 disabled:cursor-not-allowed" type="button"
+            <button class="btn btn-rose disabled:opacity-50 disabled:cursor-not-allowed" type="button"
                     wire:click="confirm('deleteSelected')"
                     wire:loading.attr="disabled" {{ $this->selectedCount ? '' : 'disabled' }}>
                 删除
@@ -38,7 +38,7 @@
         @forelse($permissions as $permission)
             <tr>
                 <td>
-                    <input type="checkbox" value="{{ $permission->id }}" wire:model="selected">
+                    <input type="checkbox" value="{{ $permission->id }}" wire:model="selected" class="rounded">
                 </td>
                 <td>
                     {{ $permission->id }}
@@ -84,7 +84,7 @@
                     <span class="font-medium">
                         {{ $this->selectedCount }}
                     </span>
-                    {{ __('Entries selected') }}
+                    条记录已选择
                 </p>
             @endif
             {{ $permissions->links() }}

@@ -7,7 +7,7 @@
 {{--                    <option value="{{ $value }}">{{ $value }}</option>--}}
 {{--                @endforeach--}}
 {{--            </select>--}}
-            <button class="btn btn-rose ml-3 disabled:opacity-50 disabled:cursor-not-allowed" type="button" wire:click="confirm('deleteSelected')" wire:loading.attr="disabled" {{ $this->selectedCount ? '' : 'disabled' }}>
+            <button class="btn btn-rose disabled:opacity-50 disabled:cursor-not-allowed" type="button" wire:click="confirm('deleteSelected')" wire:loading.attr="disabled" {{ $this->selectedCount ? '' : 'disabled' }}>
                 删除
             </button>
         </div>
@@ -43,7 +43,7 @@
             @forelse($transactions as $transaction)
                 <tr>
                     <td>
-                        <input type="checkbox" value="{{ $transaction->id }}" wire:model="selected">
+                        <input type="checkbox" value="{{ $transaction->id }}" wire:model="selected" class="rounded">
                     </td>
                     <td>
                         {{ $transaction->id }}
@@ -89,7 +89,7 @@
                     <span class="font-medium">
                         {{ $this->selectedCount }}
                     </span>
-                    {{ __('Entries selected') }}
+                    条记录已选择
                 </p>
             @endif
             {{ $transactions->links() }}

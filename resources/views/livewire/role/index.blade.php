@@ -1,7 +1,7 @@
 <div>
     <div class="card-controls sm:flex">
         <div class="w-full sm:w-1/2">
-            <button class="btn btn-rose ml-3 disabled:opacity-50 disabled:cursor-not-allowed" type="button" wire:click="confirm('deleteSelected')" wire:loading.attr="disabled" {{ $this->selectedCount ? '' : 'disabled' }}>
+            <button class="btn btn-rose disabled:opacity-50 disabled:cursor-not-allowed" type="button" wire:click="confirm('deleteSelected')" wire:loading.attr="disabled" {{ $this->selectedCount ? '' : 'disabled' }}>
                 删除
             </button>
         </div>
@@ -39,7 +39,7 @@
                 <tr>
                     <td>
                         <label>
-                            <input type="checkbox" value="{{ $role->id }}" wire:model="selected">
+                            <input type="checkbox" value="{{ $role->id }}" wire:model="selected" class="rounded">
                         </label>
                     </td>
                     <td>
@@ -88,7 +88,7 @@
                     <span class="font-medium">
                         {{ $this->selectedCount }}
                     </span>
-                    {{ __('Entries selected') }}
+                    条记录已选择
                 </p>
             @endif
             {{ $roles->links() }}

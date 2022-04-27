@@ -6,12 +6,12 @@
                 <button type="button" class="btn btn-info btn-sm deselect-all-button">{{ trans('global.deselect_all') }}</button>
             </div>
         @endif
-        <select class="select2 form-control" data-minimum-results-for-search="Infinity" data-placeholder="{{ __('Select your option') }}" {{ $attributes }}>
+        <select class="select2 form-control rounded" data-minimum-results-for-search="Infinity" data-placeholder="请选择" {{ $attributes }}>
             @if(!isset($attributes['multiple']))
-                <option></option>
+                <option class="rounded"></option>
             @endif
             @foreach($options as $key => $value)
-                <option value="{{ $key }}">{{ $value }}</option>
+                <option value="{{ $key }}" class="rounded">{{ $value }}</option>
             @endforeach
         </select>
     </div>
@@ -38,7 +38,7 @@
     function initSelect () {
         initButtons()
         el.select2({
-            placeholder: '{{ __('Select your option') }}',
+            placeholder: '请选择',
             allowClear: !el.attr('required')
         })
     }

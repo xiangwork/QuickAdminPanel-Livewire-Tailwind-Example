@@ -1,4 +1,4 @@
-<form wire:submit.prevent="submit" class="pt-3">
+<form wire:submit.prevent="submit" class="pt-3 w-1/2">
 
     <div class="form-group {{ $errors->has('user.name') ? 'invalid' : '' }}">
         <label class="form-label required" for="name">{{ trans('cruds.user.fields.name') }}</label>

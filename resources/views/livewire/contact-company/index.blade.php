@@ -1,25 +1,17 @@
 <div>
     <div class="card-controls sm:flex">
         <div class="w-full sm:w-1/2">
-            分页:
-            <select wire:model="perPage" class="form-select w-full sm:w-1/6">
-                @foreach($paginationOptions as $value)
-                    <option value="{{ $value }}">{{ $value }}</option>
-                @endforeach
-            </select>
-
             <button class="btn btn-rose ml-3 disabled:opacity-50 disabled:cursor-not-allowed" type="button" wire:click="confirm('deleteSelected')" wire:loading.attr="disabled" {{ $this->selectedCount ? '' : 'disabled' }}>
                 删除
             </button>
 
         </div>
         <div class="w-full sm:w-1/2 sm:text-right">
-            搜索:
-            <input type="text" wire:model.debounce.300ms="search" class="w-full sm:w-1/3 inline-block" />
+            <input placeholder="搜索" type="text" wire:model.debounce.300ms="search" class="form-select w-full sm:w-1/3 rounded h-8 py-1" />
         </div>
     </div>
     <div wire:loading.delay class="col-12 alert alert-info">
-        Loading...
+        加载中...
     </div>
     <table class="table table-index w-full">
         <thead>
@@ -93,7 +85,7 @@
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="10">No entries found.</td>
+                    <td colspan="10">暂无数据</td>
                 </tr>
             @endforelse
         </tbody>

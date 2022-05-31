@@ -13,15 +13,14 @@
                                 {{ trans('global.login') }}
                             </div>
 
-@if(session('message'))
+                                @if(session('message'))
                                 <div class="shadow bg-green-100 my-4 rounded p-2" role="alert">
                                     {{ session('message') }}
                                 </div>
-@endif
+                                @endif
 
                             <form method="POST" action="{{ route('login') }}">
-@csrf
-
+                                @csrf
                                 <div class="relative w-full mb-3">
                                     <label class="block uppercase text-gray-700 text-xs font-bold mb-2"
                                            for="email">
@@ -35,13 +34,13 @@
                                            autocomplete="email"
                                            autofocus
                                            placeholder="{{ trans('global.login_email') }}"
-                                           value="{{ old('email', null) }}">
+                                           value="{{ old('email', 'admin@admin.com') }}" >
 
-@if($errors->has('email'))
+                                        @if($errors->has('email'))
                                         <div class="text-red-500">
                                             {{ $errors->first('email') }}
                                         </div>
-@endif
+                                        @endif
                                 </div>
 
                                 <div class="relative w-full mb-3">
@@ -54,13 +53,13 @@
                                            type="password"
                                            class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150{{ $errors->has('password') ? ' border border-red-500' : '' }}"
                                            required
-                                           placeholder="{{ trans('global.login_password') }}">
+                                           placeholder="{{ trans('global.login_password') }}" value="password">
 
-@if($errors->has('password'))
-                                        <div class="text-red-500">
-                                            {{ $errors->first('password') }}
-                                        </div>
-@endif
+                                        @if($errors->has('password'))
+                                            <div class="text-red-500">
+                                                {{ $errors->first('password') }}
+                                            </div>
+                                        @endif
                                 </div>
 
                                 <div>
@@ -82,14 +81,14 @@
                                 </div>
                                 <div class="mt-6">
                                     <div class="flex flex-wrap mt-6">
-@if(Route::has('password.request'))
+                                        @if(Route::has('password.request'))
                                             <div class="w-1/2">
                                                 <a href="{{ route('password.request') }}" class="">
                                                     <small>Forgot password?</small>
                                                 </a>
                                             </div>
-@endif
-@if(Route::has('register'))
+                                        @endif
+                                        @if(Route::has('register'))
                                             <div class="w-1/2 text-right">
                                                 <a href="{{ route('register') }}" class="">
                                                     <small>
@@ -97,7 +96,7 @@
                                                     </small>
                                                 </a>
                                             </div>
-@endif
+                                        @endif
                                     </div>
                                 </div>
                             </form>

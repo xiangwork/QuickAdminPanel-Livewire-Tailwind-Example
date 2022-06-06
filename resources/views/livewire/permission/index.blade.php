@@ -9,7 +9,8 @@
         </div>
         <div class="w-full sm:w-1/2 sm:text-right">
             <label>
-                <input placeholder="搜索" type="text" wire:model.debounce.300ms="search" class="form-select w-full sm:w-1/3 rounded h-8 py-1 rounded"/>
+                <input placeholder="搜索" type="text" wire:model.debounce.300ms="search"
+                       class="form-select w-full sm:w-1/3 rounded h-8 py-1 rounded"/>
             </label>
         </div>
     </div>
@@ -20,7 +21,7 @@
         <thead>
         <tr>
             <th class="w-9">
-                <input type="checkbox" onclick="selectAll()">
+                <input type="checkbox" wire:click="selectAllRecords">
             </th>
             <th class="w-28">
                 {{ trans('cruds.permission.fields.id') }}

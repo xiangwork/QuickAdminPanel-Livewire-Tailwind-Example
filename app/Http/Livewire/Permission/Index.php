@@ -60,18 +60,18 @@ class Index extends Component
 
     public function mount()
     {
-        $this->sortBy            = 'id';
-        $this->sortDirection     = 'desc';
-        $this->perPage           = 10;
+        $this->sortBy = 'id';
+        $this->sortDirection = 'desc';
+        $this->perPage = 10;
         $this->paginationOptions = config('project.pagination.options');
-        $this->orderable         = (new Permission())->orderable;
+        $this->orderable = (new Permission())->orderable;
     }
 
     public function render()
     {
         $query = Permission::advancedFilter([
-            's'               => $this->search ?: null,
-            'order_column'    => $this->sortBy,
+            's' => $this->search ?: null,
+            'order_column' => $this->sortBy,
             'order_direction' => $this->sortDirection,
         ]);
 
@@ -94,5 +94,22 @@ class Index extends Component
         abort_if(Gate::denies('permission_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $permission->delete();
+    }
+
+    //全选
+    public function selectAllRecords()
+    {
+        if (! empty($this->selected)) {
+            return $this->resetSelected();
+        }
+
+        $query = Permission::advancedFilter([
+            's' => $this->search ?: null,
+            'order_column' => $this->sortBy,
+            'order_direction' => $this->sortDirection,
+        ]);
+        $ids = $query->get()->pluck('id')->toArray();
+
+        $this->selected = $ids;
     }
 }

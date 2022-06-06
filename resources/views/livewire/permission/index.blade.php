@@ -21,7 +21,7 @@
         <thead>
         <tr>
             <th class="w-9">
-                <input type="checkbox" wire:click="selectAllRecords">
+                <input type="checkbox" wire:click="selectAllRecords" class="rounded">
             </th>
             <th class="w-28">
                 {{ trans('cruds.permission.fields.id') }}
